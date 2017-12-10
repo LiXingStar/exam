@@ -4,7 +4,7 @@
         <div class="container">
             <div class="line bouncein">
                 <div class="xs6 xm4 xs3-move xm4-move">
-                    <div style="height:150px;"></div>
+                    <div style="height:75px;"></div>
                     <div class="media media-y margin-big-bottom">
                     </div>
 
@@ -18,6 +18,11 @@
                             <el-input type="password" v-model="form.pass"></el-input>
                         </el-form-item>
 
+                        <el-form-item label="验证码">
+                            <el-input v-model="form.code"></el-input>
+                            <img :src="src" alt="" width="100" height="40" class="passcode"  @click="src='/home/code.php?id='+Math.random()" style="height: 38px;">
+                        </el-form-item>
+
                         <el-form-item label="角色" prop="type">
                             <el-radio-group v-model="form.type">
                                 <el-radio label="manager">管理员</el-radio>
@@ -25,6 +30,7 @@
                                 <el-radio label="student">学生</el-radio>
                             </el-radio-group>
                         </el-form-item>
+                        
 
                         <el-form-item>
                             <el-button type="primary" @click="onSubmit('form')">登陆</el-button>
@@ -41,15 +47,17 @@
         name: 'login',
         data() {
             return {
+                src:'/home/code.php',
                 form: {
                     name: '',
                     pass: '',
                     type: '',
+                    code:''
                 },
                 rules:{
                     name:[
                         { required: true, message: '请输入用户名', trigger: 'blur' },
-                        { min: 3, max: 8, message: '长度在 3 到 8 个字符', trigger: 'blur' }
+                        { min: 1, max: 8, message: '长度在 1 到 8 个字符', trigger: 'blur' }
                     ],
                     pass:[
                         { required: true, message: '请输入密码', trigger: 'blur' },
@@ -58,7 +66,7 @@
                     type: [
                         { required: true, message: '请选择角色', trigger: 'change' }
                     ],
-                }
+                },
             }
         },
         methods: {
@@ -74,9 +82,9 @@
                                  if(this.form.type=='manager'){
                                      this.$router.push('manage');
                                  }else if(this.form.type == 'teacher'){
-
+                                     this.$router.push('teacher');
                                  }else if(this.form.type=='student'){
-
+                                this.$router.push({name:'studentExam'});
                                  }
 
                              }else if(res.body == 2){
@@ -98,6 +106,14 @@
                 });
 
             }
+        },
+        mounted(){
+            /*this.$http.get('/home/code.php').then(res=>{
+//               this.src = res.body;
+                console.log(res)
+
+                this.src= "data:image/png;base64,"+res.body
+            })*/
         }
     }
 </script>

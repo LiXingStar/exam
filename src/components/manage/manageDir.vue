@@ -3,7 +3,7 @@
         <div class="panel admin-panel">
             <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong></div>
             <div class="padding border-bottom">
-                <a class="button border-yellow" href=""><span class="icon-plus-square-o"></span> 添加内容</a>
+                <router-link  class="button border-yellow" :to="{name:'dirAdd'}" ><span class="icon-plus-square-o"></span> 添加内容</router-link>
             </div>
 
 
@@ -24,7 +24,7 @@
                         label="操作"
                 >
                     <template slot-scope="scope">
-                     <router-link :to="{name:'dirUpdate',query:{did:scope.row.did}}">修改</router-link>
+                     <router-link :to="{name:'dirUpdate',query:{did:scope.row.did}}" style="color: #409EFF;font-size: 14px">修改</router-link>
 
                         <el-button type="text" size="small" @click="del(scope.row.did)">删除</el-button>
                     </template>

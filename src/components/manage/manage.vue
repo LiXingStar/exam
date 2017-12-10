@@ -13,9 +13,16 @@
                 <li><a href="#/manage/manageDir"><span class="icon-caret-right"></span>方向管理</a></li>
                 <li>
                     <router-link :to="{name:'manageStage'}"><span class="icon-caret-right"></span>阶段管理</router-link></li>
-                <li><a href="list.html" target="right"><span class="icon-caret-right"></span>班级管理</a></li>
-                <li><a href="list.html" target="right"><span class="icon-caret-right"></span>学生管理</a></li>
-                <li><a href="list.html" target="right"><span class="icon-caret-right"></span>教师管理</a></li>
+                <li>
+                <router-link :to="{name:'manageClasses'}"><span class="icon-caret-right"></span>班级管理</router-link></li>
+                <li>
+                    <router-link :to="{name:'manageStudent'}"><span class="icon-caret-right"></span>学生管理</router-link></li>
+                <li>
+                    <router-link :to="{name:'manageTeacher'}"><span class="icon-caret-right"></span>教师管理</router-link></li>
+                <li>
+                    <router-link :to="{name:'index'}"><span class="icon-caret-right"></span>excel</router-link></li>
+                <!--<li>
+                    <router-link :to="{name:'test'}"><span class="icon-caret-right"></span>测试</router-link></li>-->
             </ul>
         </div>
         <ul class="bread">
